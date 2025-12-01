@@ -3,6 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HardSourcePlugin = require('hard-source-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -47,6 +48,9 @@ module.exports = {
     port: 8080
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    }),
     new HardSourcePlugin({
       cacheDirectory: path.join(__dirname, 'node_modules/.cache/hardsource/[confighash]'),
       recordsPath: path.join(__dirname, 'node_modules/.cache/hardsource/[confighash]/records.json'),
